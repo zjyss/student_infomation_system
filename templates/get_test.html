@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+<div id="content">
+{% block header %}
+<div class="page-header" style="float: left">
+    <h1 style="margin-left: 100px">综合教务管理系统 <small>学生综合信息中心</small>
+{% verbatim %}
+        <div class='yyy'>
+            {{ infolist.student_study_id }}
+           {{ infolist.student_name }}
+            <a href=/logout>退出登录</a></div>
+{% endverbatim %}
+    </h1>
+</div>
+{% endblock %}
+
+{% block col-8 %}
+    <div class="col-md-8">
+        <HR align=center width=100% color=blue SIZE=1>
+        <h3 style="color: cornflowerblue">选修课程列表</h3>
+        <HR align=center width=100% color=white SIZE=1>
+        <form role="form" method="post">
+    <table class="table table-hover">
+
+  <thead>
+    <tr>
+        <th>状态</th>
+      <th>课程编号</th>
+      <th>课程名称</th>
+      <th>上课地点</th>
+      <th>剩余可选</th>
+    </tr>
+  </thead>
+  <tbody>
+  {% verbatim %}
+    <tr v-for="i in lesson_list">
+      <td v-if="! i.is_default"><input type="radio" :id="i.lesson_id" name="zzz" :value='i.lesson_name'><label :for="i.lesson_id">选择</label></td>
+      <td v-if="! i.is_default"><b>{{ i.lesson_id }}</b></td>
+      <td v-if="! i.is_default"><b>{{i.lesson_name}}</b></td>
+      <td v-if="! i.is_default"><b>{{i.lesson_local}}</b></td>
+      <td v-if="! i.is_default"><b>{{i.lesson_num}}</b></td>
+    </tr>
+{% endverbatim %}
+  <h4 style="color: crimson" id="message"></h4>
+  </tbody>
+</table>
+            <button type="submit" id="btn" class="btn btn-default" style="margin-left: 90%;"><b>提交</b></button>
+        </form>
+
+    </div>
+
+{% endblock %}
+</div>
+{% block aa %}
+    <script src="../static/js/lesson_learn.js"></script>
+{% endblock %}

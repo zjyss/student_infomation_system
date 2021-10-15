@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+<div id="content">
+{% block header %}
+<div class="page-header" style="float: left">
+    <h1 style="margin-left: 100px">综合教务管理系统 <small>学生综合信息中心</small>
+{% verbatim %}
+        <div class='yyy'>
+            {{ infolist.student_study_id }}
+           {{ infolist.student_name }}
+            <a href=/logout>退出登录</a></div>
+{% endverbatim %}
+    </h1>
+</div>
+{% endblock %}
+{% block col-8 %}
+    {% verbatim %}
+    <div class="col-md-8">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href=/log_in>学籍信息</a></li>
+            <li role="presentation" class="active"><a href="#">个人信息</a></li>
+            <li role="presentation"><a href=/my_lesson>我的课程</a></li>
+            <li role="presentation"><a href=/my_grades>我的成绩</a></li>
+        </ul>
+
+        <h5 style="font-size: 20px">{{ infolist.student_name }}</h5>
+        <HR align=center width=100% color=blue SIZE=1>
+        <p><h5 style="font-size: 20px">登陆</h5></p>
+        <HR align=center width=100% color=blue SIZE=1>
+        <div style="margin-left: 17px; border-color: darkseagreen">
+
+                <p><b>姓名：{{ infolist.student_name }}</b></p>
+                    <p><b>用户类别：学生</b></p>
+                <p><b>密码：{{ infolist.student_passwd }}</b></p>
+
+            <p><a href=/register>密码更改</a></p>
+        </div>
+        <HR align=center width=100% color=blue SIZE=1>
+        <p style="font-size: 20px">个人信息维护</p>
+        <HR align=center width=100% color=blue SIZE=1>
+        <form role="form" method="post">
+            <table style="margin-left: 17px">
+
+
+                <tr>
+                    <td style="padding-top: 20px"><b>手机号码&nbsp;&nbsp;</b></td>
+                    <td style="padding-top: 20px"><input type="tel" style="width:95%"
+                                                         :value="infolist.student_tel" id="student_tel"
+                                                         name="student_tel"></td>
+
+                </tr>
+                <tr>
+                    <td style="padding-top: 20px"><b>EMAIL&nbsp;&nbsp;</b></td>
+                    <td style="padding-top: 20px"><input :value="infolist.student_email" type="tel" style="width:95%"
+                                                         id="student_email" name="student_email"></td>
+
+                </tr>
+                <tr>
+                    <td style="padding-top: 20px"><b>通讯地址&nbsp;&nbsp;</b></td>
+                    <td style="padding-top: 20px"><input :value="infolist.student_addr" type="tel" style="width:95%"
+                                                         id="student_addr" name="student_addr"></td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="left" style="padding-top: 20px">
+
+                        <input type="submit" id="btn" value="保存">
+
+
+                    </td>
+                </tr>
+
+            </table>
+            <br>
+            <div class="form-group" style="margin-left: 17px">
+                <label for="name">个人简介</label>
+                <textarea class="form-control" rows="3" style="width: 400px" id="student_short"
+                          name="student_short">{{ infolist.student_short }}</textarea>
+            </div>
+        </form>
+        <HR align=center width=100% color=blue SIZE=1>
+    </div>
+    {% endverbatim %}
+{% endblock col-8 %}
+</div>
+{% block aa %}
+    <script src="../static/js/my_info.js"></script>
+{% endblock %}

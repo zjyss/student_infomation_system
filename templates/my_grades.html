@@ -1,0 +1,140 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+
+
+        .breadcrumb {
+            margin-left: 4%;
+            background-color: burlywood;
+            height: 0;
+        }
+
+        .jjj {
+        {#border-width: 250px;#} padding-left: 30%;
+            margin-top: 0;
+            border-style: solid;
+            border-color: aliceblue;
+        }
+
+        .yyy {
+        {#background-color: darkgray;#} float: right;
+            padding-left: 195px;
+            padding-bottom: 0;
+            font-size: 16px;
+        }
+
+        .image_title {
+            float: left;
+            margin-top: 0;
+        }
+
+        .form-left {
+            margin-left: -10px;
+        }
+
+        .form-right {
+            position: absolute;
+            top: 81px;
+            right: 165px;
+        }
+
+    </style>
+{% endblock style %}
+<div id="content">
+{% block header %}
+<div class="page-header" style="float: left">
+    <h1 style="margin-left: 100px">综合教务管理系统 <small>学生综合信息中心</small>
+{% verbatim %}
+        <div class='yyy'>
+            {{ infolist.student_study_id }}
+           {{ infolist.student_name }}
+            <a id="log_out">退出登录</a></div>
+{% endverbatim %}
+    </h1>
+</div>
+{% endblock %}
+{% block col-8 %}
+    <div class="col-md-8">
+  <ul class="nav nav-tabs">
+    <li><a href=/log_in>学籍信息</a></li>
+    <li><a href=/my_info>个人信息</a></li>
+    <li><a href=/my_lesson>我的课程</a></li>
+    <li class="dropdown">
+      <a class="dropdown-toggle" data-toggle="dropdown" href="#" >
+        我的成绩 <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu">
+        <li><a href=/grade1718>16-17学年</a></li>
+        <li><a href=/grade1718>17-18学年</a></li>
+        <li><a href=/grade1819>18-19学年</a></li>
+        <li><a href="#">19-20学年</a></li>
+        <li class="divider"></li>
+        <li><a href=/my_grades>总览</a></li>
+      </ul>
+    </li>
+
+  </ul>
+
+        <div class="jjj">
+            {#个人信息框#}
+        <HR align=center width=100% color=blue SIZE=1>
+            <table class="table table-hover" style="margin-left: -250px">
+
+                <thead>
+                <tr>
+                    <th>课程编号</th>
+                    <th>课程名称</th>
+                    <th>课程属性</th>
+                    <th>课程学分</th>
+                    <th>成绩</th>
+                    <th>结果</th>
+                    <th>未通过原因</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% verbatim %}
+                    <tr v-for="(i,index) in lesson_list">
+
+                    <td>{{ i.lesson_id }}</td>
+                        <td>{{ i.lesson_name }}</td>
+
+                        <td v-if="i.is_default">必修</td>
+
+                    <td v-else>选修</td>
+
+                        <td>{{ i.lesson_name.lesson_score }}</td>
+                        <td>{{ grade_list[index] }}</td>
+                        <td v-if="grade_list[index]>=60">
+                            通过
+                        </td>
+                        <td v-else-if="0<grade_list[index]<=60">
+                            未通过
+                        </td>
+                        <td v-else>
+
+                        </td>
+                        <td v-if="grade_list[index]<=60">
+                            成绩低于60分
+                        </td>
+                    </tr>
+                {% endverbatim %}
+
+                </tbody>
+            </table>
+        </div>
+    {% verbatim %}
+    <p><h5><b style="color: cornflowerblue">{{infolist.student_go_school_year}}级{{infolist.student_major}}人才培养方案完成情况</b></h5></p>
+    {% endverbatim %}
+    <HR align=center width=100% color=blue SIZE=1>
+    <p><b>学期总学分： {{ sum }}</b></p>
+    <p><b>已获得学分： {{ sum1 }}</b></p>
+    <p><b>通过总门数： {{ m }}</b></p>
+    <p><b>未通过门数： {{ k }}</b></p>
+    <HR align=center width=100% color=blue SIZE=1>
+    <div></div>
+    </div>
+{% endblock col-8 %}
+</div>
+{% block aa %}
+    <script src="../static/js/my_grade.js"></script>
+{% endblock %}

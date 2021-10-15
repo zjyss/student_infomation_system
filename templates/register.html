@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        .zhang{
+            background-image: url(../static/Images/background.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>注册</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</head>
+<body class="zhang">
+    <div class="row">
+      <div class="col-md-4"></div>
+      <div class="col-md-4">
+          <div>
+              <img src="../static/Images/logo.jpg" style="padding: 5% 5% 5% 22%">
+          </div>
+          <form method="post">
+              <div>
+                <label for="exampleInputPassword1" class="text-center">输入原始密码</label>
+                  <p><b style="color: crimson">{{ err }}</b></p>
+                <input type="password" class="form-control" id="student_passwd" name="student_passwd" placeholder="密码">
+              </div>
+
+              <div>
+                <label for="exampleInputPassword1" class="text-center">输入新密码</label>
+                <input type="password" class="form-control" id="student_passwd1" name="student_passwd1" placeholder="密码">
+              </div>
+
+              <div>
+                <label for="exampleInputPassword1" class="text-center">再次输入新密码</label>
+                <input type="password" class="form-control" id="student_passwd2" name="student_passwd2" placeholder="密码">
+              </div>
+                <p><b style="color: crimson">{{ err1 }}</b></p>
+              <div class="text-center" style="margin-top: 5%">
+
+                    <button type="注册" class="btn btn-default">修改</button>
+                  <button type="登陆" class="btn btn-default" style="margin-left: 30%"><a href=/my_info>返回</a></button>
+              </div>
+            </form>
+      </div>
+      <div class="col-md-4"></div>
+    </div>
+</body>
+</html>

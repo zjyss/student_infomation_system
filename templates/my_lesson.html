@@ -1,0 +1,121 @@
+{% extends 'base.html' %}
+{% block style %}
+    <style>
+
+        .breadcrumb {
+            margin-left: 4%;
+            background-color: burlywood;
+            height: 0;
+        }
+
+        .jjj {
+        {#border-width: 250px;#} padding-left: 30%;
+            margin-top: 0;
+            border-style: solid;
+            border-color: azure;
+        }
+
+        .yyy {
+        {#background-color: darkgray;#} float: right;
+            padding-left: 195px;
+            padding-bottom: 0;
+            font-size: 16px;
+        }
+
+        .image_title {
+            float: left;
+            margin-top: 0;
+        }
+
+        .form-left {
+            margin-left: -10px;
+        }
+
+        .form-right {
+            position: absolute;
+            top: 81px;
+            right: 165px;
+        }
+
+    </style>
+{% endblock style %}
+<div id="content">
+{% block header %}
+<div class="page-header" style="float: left">
+    <h1 style="margin-left: 100px">综合教务管理系统 <small>学生综合信息中心</small>
+{% verbatim %}
+        <div class='yyy'>
+            {{ infolist.student_study_id }}
+           {{ infolist.student_name }}
+            <a href=/logout>退出登录</a></div>
+{% endverbatim %}
+    </h1>
+</div>
+{% endblock %}
+
+{% block col-8 %}
+    <div class="col-md-8">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href=/log_in>学籍信息</a></li>
+            <li role="presentation"><a href=/my_info>个人信息</a></li>
+            <li role="presentation" class="active"><a href="#">我的课程</a></li>
+            <li role="presentation"><a href=/my_grades>我的成绩</a></li>
+        </ul>
+
+
+
+
+
+
+        <div class="jjj">
+            {#个人信息框#}
+            <div class="form-left">
+                <table class="table table-hover" style="margin-left: -210px">
+                    <caption><b>我的课程信息</b></caption>
+                    <thead>
+                    <tr>
+                        <th>课程名称</th>
+                        <th>课程地点</th>
+                        <th>课程属性</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% verbatim %}
+                        <tr v-for="i in lesson_list">
+                            <td>{{ i.lesson_name }}</td>
+                            <td>{{ i.lesson_local }}</td>
+                            <td v-if="i.is_default">必修课程</td>
+                            <td v-else>选修课程</td>
+
+
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="form-right">
+                <table class="table table-hover">
+
+                    <thead>
+                    <tr>
+                        <th>老师姓名</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                        <tr v-for="j in teacher_list">
+                            <td>{{ j }}</td>
+                        </tr>
+
+                    {% endverbatim %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+{% endblock col-8 %}
+  </div>
+{% block aa %}
+    <script src="../static/js/my_lesson.js"></script>
+{% endblock %}

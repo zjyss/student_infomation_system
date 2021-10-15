@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block col-8 %}
+ <div class="col-md-8">
+    <HR align=center width=100% color=blue SIZE=1>
+
+     <h3 style="text-align: center"> {{ title }}</h3>
+ <HR align=center width=100% color=blue SIZE=1>
+    {% for i in acontents %}
+     <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{i}}</p>
+
+{% endfor %}
+
+
+
+    <HR align=center width=100% color=blue SIZE=1>
+ </div>
+{% endblock %}

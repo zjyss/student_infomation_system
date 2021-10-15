@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block col-8 %}
+    <div class="col-md-8">
+        <ul class="nav nav-tabs">
+            <li><a href=/log_in>学籍信息</a></li>
+            <li><a href=/my_info>个人信息</a></li>
+            <li><a href=/my_lesson>我的课程</a></li>
+            <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                    我的成绩 <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li><a href=/grade1718>16-17学年</a></li>
+                    <li><a href=/grade1718>17-18学年</a></li>
+                    <li><a href=/grade1819>18-19学年</a></li>
+                    <li><a href=/grade1920>19-20学年</a></li>
+                    <li class="divider"></li>
+                    <li><a href=/my_grades>总览</a></li>
+                </ul>
+            </li>
+
+        </ul>
+        <h4>暂无数据</h4>
+    </div>
+{% endblock col-8 %}

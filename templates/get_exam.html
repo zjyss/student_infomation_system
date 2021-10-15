@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+<div id="content">
+    {% block header %}
+        <div class="page-header" style="float: left">
+            <h1 style="margin-left: 100px">综合教务管理系统 <small>学生综合信息中心</small>
+                {% verbatim %}
+                <div class='yyy'>
+                    {{ infolist.student_study_id }}
+                    {{ infolist.student_name }}
+                    <a href=/logout>退出登录</a></div>
+                {% endverbatim %}
+            </h1>
+        </div>
+    {% endblock %}
+    {% block col-8 %}
+        <div class="col-md-8">
+            <HR align=center width=100% color=blue SIZE=1>
+            <h3 style="color: cornflowerblue">待报考列表</h3>
+            <HR align=center width=100% color=white SIZE=1>
+            <form role="form">
+                <table class="table table-hover">
+
+                    <thead>
+                    <tr>
+                        <th>状态</th>
+                        <th>考试编号</th>
+                        <th>考试名称</th>
+                        <th>考试时间</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+                    {% verbatim %}
+                    <tr v-for="i in examlist">
+                        <td><input type="radio" :id="i.exam_id " name="zzz" :value="i.exam_name"><label
+                                :for="i.exam_id">选择</label></td>
+                        <td><b>{{ i.exam_id }}</b></td>
+                        <td><b>{{ i.exam_name }}</b></td>
+                        <td><b>{{ i.exam_time }}</b></td>
+                    </tr>
+
+                    {% endverbatim %}
+
+                    <h4 style="color: crimson">{{ err }}</h4>
+                    <h4 style="color: blue">{{ mes }}</h4>
+                    </tbody>
+                </table>
+                <button id="btn_add" type="submit" class="btn btn-default" style="margin-left: 90%;"><b>提交</b></button>
+            </form>
+            <HR align=center width=100% color=blue SIZE=1>
+            <h3 style="color: cornflowerblue">已报考列表</h3>
+            <form role="form" action="/exam_check" method="post">
+                <table class="table table-hover">
+
+                    <thead>
+                    <tr>
+                        <th>状态</th>
+                        <th>考试编号</th>
+                        <th>考试名称</th>
+                        <th>考试时间</th>
+
+                    </tr>
+                    </thead>
+                    <tbody>
+
+
+                    {% verbatim %}
+
+                        <tr v-for="i in exam_getlist">
+                            <td><input type="radio" :id="i.exam_id" name="zzz"
+                                       :value="i.exam_name"><label>取消报考</label></td>
+                            <td><b>已报考</b></td>
+                            <td><b>{{ i.exam_id }}</b></td>
+                            <td><b>{{ i.exam_name }}</b></td>
+                            <td><b>{{ i.exam_time }}</b></td>
+                        </tr>
+
+                    {% endverbatim %}
+
+                    </tbody>
+                </table>
+                <button id="btn_del" type="submit" class="btn btn-default" style="margin-left: 90%;"><b>提交</b></button>
+            </form>
+        </div>
+        </div>
+    {% endblock %}
+{% block aa %}
+    <script src="../static/js/get_exam.js"></script>
+{% endblock %}

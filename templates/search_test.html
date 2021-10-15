@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+
+<div id="content">
+{% block header %}
+<div class="page-header" style="float: left">
+    <h1 style="margin-left: 100px">综合教务管理系统 <small>学生综合信息中心</small>
+{% verbatim %}
+        <div class='yyy'>
+            {{ infolist.student_study_id }}
+           {{ infolist.student_name }}
+            <a href=/logout>退出登录</a></div>
+{% endverbatim %}
+    </h1>
+</div>
+{% endblock %}
+
+{% block col-8 %}
+    <div class="col-md-8">
+        <ul class="nav nav-tabs">
+            <li role="presentation"><a href=/log_in>学籍信息</a></li>
+            <li role="presentation"><a href=/my_info>个人信息</a></li>
+            <li role="presentation"><a href=/my_lesson>我的课程</a></li>
+            <li role="presentation"><a href=/my_grades>我的成绩</a></li>
+        </ul>
+
+        <h5 style="font-size: 20px">本学期考试安排</h5>
+        <HR align=center width=100% color=blue SIZE=1>
+
+    <table class="table">
+
+  <thead>
+    <tr>
+      <th>课程</th>
+      <th>考试日期</th>
+      <th>状态</th></tr>
+  </thead>
+  <tbody>
+
+  {% verbatim %}
+    <tr v-for="i in lesson_list">
+      <td>{{ i.lesson_name }}</td>
+      <td>{{ i.lesson_time }}</td>
+      <td v-if="i.is_default">必修课程</td>
+      <td v-else>选修课程</td>
+    </tr>
+
+  {% endverbatim %}
+
+  </tbody>
+</table>
+
+
+
+    </div>
+{% endblock col-8 %}
+</div>
+{% block aa %}
+    <script src="../static/js/search_test.js"></script>
+{% endblock %}
