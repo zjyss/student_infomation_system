@@ -77,10 +77,10 @@ WSGI_APPLICATION = 'Student_System_Tow.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'student',
+        'NAME': 'test423',
         'USER': 'root',
-        'PASSWORD': 'Zhang308203.',
-        'HOST': '106.14.68.148',
+        'PASSWORD': '123456',
+        'HOST': '8.133.168.41',
         'PORT': 3306,
     }
 }
@@ -127,7 +127,7 @@ STATICFILES_DIRS = (
 CACHES = {
     'default': {
         'BACKEND': 'django_redis.cache.RedisCache',
-        'LOCATION': 'redis://106.14.68.148:6379/1',
+        'LOCATION': 'redis://127.0.0.1:6379/1',
         'KEY_PREFIX': 'django_student',
         "OPTIONS": {
             "CLIENT_CLASS": "django_redis.client.DefaultClient",
